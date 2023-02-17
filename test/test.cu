@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <chrono>
+#include <random>
 
 class FastMultTest : public ::testing::Test
 {
@@ -16,7 +17,7 @@ protected:
         c = std::vector<uint128_t>( size );
 
         unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-        std::mt19937_64 gen( seed );
+        std::mt19937 gen( seed );
         std::uniform_int_distribution<uint64_t> dist( 1, uint64_t(-1) );
         for( unsigned i = 0; i < size; i++ )
         {
